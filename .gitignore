@@ -10,7 +10,7 @@ __pycache__/
 data/weekly_log.jsonl
 data/status_snapshot_current.json
 data/project_snapshot_*.json
-queries/*.csv
+queries/
 .DS_Store
 .claude/settings.json
 .claude/settings.local.json
@@ -41,4 +41,3 @@ map-pin-mockup*
 claude-code-setup-guide*
 pm_os_infographic*
 low_l2b_accounts*
-queries/*.md
