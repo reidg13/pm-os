@@ -1,0 +1,16 @@
+{
+  "vault_path": "/Users/YOUR_USERNAME/Documents/Obsidian Vault",
+  "asana_workspace_gid": "YOUR_WORKSPACE_GID_HERE",
+  "asana_user_gid": "YOUR_USER_GID_HERE",
+  "asana_boards": {
+    "active_projects": "YOUR_BOARD_NAME_OR_GID_1",
+    "design_board": "YOUR_BOARD_NAME_OR_GID_2"
+  },
+  "vault_to_asana_mappings": {
+    "Project Name 1": "asana_project_gid_or_name",
+    "Project Name 2": "asana_project_gid_or_name",
+    "Project Name 3": "asana_project_gid_or_name"
+  },
+  "slack_channel_id": "YOUR_SLACK_CHANNEL_ID",
+  "claude_api_key": "sk-YOUR_KEY_HERE"
+}

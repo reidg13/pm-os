@@ -1,0 +1,15 @@
+anthropic
+asana
+snowflake-connector-python
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+slack-bolt
+slack-sdk
+python-dotenv
+requests
+PyYAML
+playwright
+boto3
+mcp[cli]

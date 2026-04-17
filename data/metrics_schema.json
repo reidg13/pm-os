@@ -1,0 +1,9 @@
+{
+  "car_date_col": "CREATED_AT_UTC",
+  "car_gbv_col": "TOTAL",
+  "hotel_date_col": "CREATED_AT",
+  "hotel_gbv_col": "CUSTOMER_TOTAL",
+  "hotel_table": "FCT_BOOKINGS",
+  "hotel_status_col": "STATUS",
+  "hotel_status_val": "IN ('booked', 'visiting', 'completed')"
+}
