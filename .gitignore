@@ -12,6 +12,7 @@ data/status_snapshot_current.json
 data/project_snapshot_*.json
 queries/*.csv
 .DS_Store
+.claude/settings.json
 .claude/settings.local.json
 
 # Generated artifacts (infographics, presentations, one-off scripts)

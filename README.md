@@ -257,6 +257,47 @@ Includes role-based task router (PM, Sales, Leadership, Design, GTM, PR, Data, O
 
 ## External Integrations
 
+### Google Sheets & Slides (Roadmap, Presentations)
+
+Local MCP servers for reading/writing Google Sheets and Slides. Auto-started by a SessionStart hook.
+
+**Setup:**
+
+1. Copy the settings example:
+   ```bash
+   cp .claude/settings.json.example .claude/settings.json
+   ```
+   This configures a SessionStart hook that auto-starts the Google Sheets and Slides MCP servers when you open Claude Code.
+
+2. The hook script (`.claude/hooks/start-google-sheets-mcp.sh`) starts two local MCP servers:
+   - **Google Sheets** on port 3000 (`google-sheets-mcp` npm package)
+   - **Google Slides/Drive** on port 3100 (`@piotr-agier/google-drive-mcp` npm package)
+
+3. You'll need Google OAuth credentials. The hook expects:
+   - `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` (set in the hook script)
+   - A Google Drive OAuth credentials JSON file (for Slides)
+
+4. Add the MCP servers to your Claude Code config (`~/.claude.json`):
+   ```json
+   "mcpServers": {
+     "google-sheets": {
+       "type": "http",
+       "url": "http://localhost:3000/mcp"
+     },
+     "google-slides": {
+       "type": "http",
+       "url": "http://localhost:3100/mcp"
+     }
+   }
+   ```
+
+5. Requires Node.js 22+ (for npx).
+
+**What you can do:**
+- Read/write the roadmap Google Sheet (project status, feature requests, shipped work)
+- Create and edit Google Slides presentations
+- Pull data from Sheets into your briefings or reports
+
 ### Snowflake
 
 Connects via `snowflake-connector-python`. Queries your product area booking metrics, GBV, and funnel data.
