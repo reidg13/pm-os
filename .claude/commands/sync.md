@@ -109,7 +109,7 @@ EOF
 ## Step 3: Slack triage
 
 ```
-slack_search_public_and_private(query="<@YOUR_SLACK_ID> after:2_HOURS_AGO_DATE")
+slack_search_public_and_private(query="<@YOUR_SLACK_USER_ID> after:2_HOURS_AGO_DATE")
 slack_search_public_and_private(query="to:me after:2_HOURS_AGO_DATE")
 ```
 

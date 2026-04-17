@@ -40,7 +40,7 @@ Find yesterday's daily note. The daily notes live in week-folders: `Daily Notes/
 
 The Google Sheets roadmap is the source of truth for project status. Sync it to Obsidian so project files are current before gathering tasks.
 
-1. Read the roadmap: `mcp__google-sheets__values_get(spreadsheetId="YOUR_SPREADSHEET_ID", range="YOUR_ROADMAP_TAB!A1:N50")`
+1. Read the roadmap: `mcp__google-sheets__values_get(spreadsheetId="YOUR_ROADMAP_SPREADSHEET_ID", range="YOUR_ROADMAP_TAB!A1:N50")`
 2. Read all Obsidian project files' YAML frontmatter (Glob `Projects/*/` → read each `.md`)
 3. For each roadmap row, match to an Obsidian project file (fuzzy match on project name)
 4. Compare `status:` in frontmatter vs column A in the roadmap
@@ -98,7 +98,7 @@ Filter — **include** if:
 For each included meeting, extract:
 - **time**: start time formatted as "9:30 AM"
 - **title**: event summary
-- **attendees**: display names excluding the PM (YOUR_EMAIL). Cap at 12, add "and N others" if truncated
+- **attendees**: display names excluding the PM (YOUR_EMAIL@company.com). Cap at 12, add "and N others" if truncated
 - **description**: stripped of HTML, Zoom links, phone numbers. Keep only real agenda text
 
 Store meeting list for Steps 4, 6, 7.
@@ -380,7 +380,7 @@ gmail_search_messages(q="is:unread -category:promotions -category:social -catego
 
 ### Slack
 ```
-slack_search_public_and_private(query="<@YOUR_SLACK_ID> after:YESTERDAY")
+slack_search_public_and_private(query="<@YOUR_SLACK_USER_ID> after:YESTERDAY")
 slack_search_public_and_private(query="to:me after:YESTERDAY")
 ```
 **Skip:** FYI announcements, bots (Google Calendar DMs, Jira digests), one-liner replies ("for sure!", "nice!"), passive CC
@@ -399,7 +399,7 @@ Report: "Email: N scanned, M tasks added. Slack: N scanned, M tasks added."
 
 ## Step 9: Propose roadmap updates for YOUR_ROADMAP_TAB
 
-Spreadsheet ID: `YOUR_SPREADSHEET_ID`
+Spreadsheet ID: `YOUR_ROADMAP_SPREADSHEET_ID`
 Tab: `YOUR_ROADMAP_TAB` (columns: A=Status, B=Project, N=Last Update)
 
 1. Read the roadmap: `mcp__google-sheets__values_get(spreadsheetId, range="YOUR_ROADMAP_TAB!A1:N30")`

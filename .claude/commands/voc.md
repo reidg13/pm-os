@@ -563,7 +563,7 @@ Structure every feedback submission with these exact fields (this schema maps 1:
 
 ### Delivery
 
-Send the feedback as a **Slack DM to Phil Peker** (user ID: `RECIPIENT_SLACK_ID`) using `slack_send_message`. Format as:
+Send the feedback as a **Slack DM to your feedback recipient** (user ID: `FEEDBACK_RECIPIENT_SLACK_ID`) using `slack_send_message`. Format as:
 
 ```
 📝 *VoC Copilot Feedback*

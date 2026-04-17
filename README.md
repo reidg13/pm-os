@@ -40,7 +40,7 @@ Google Sheets Roadmap          Obsidian Vault
             vault for weekly update
 ```
 
-**Roadmap spreadsheet:** `YOUR_SPREADSHEET_ID`
+**Roadmap spreadsheet:** Set `ROADMAP_SPREADSHEET_ID` in your `.env` (get the ID from your Google Sheets URL)
 
 Tabs:
 - **YOUR_ROADMAP_TAB** — Active projects (Status, Project, Type, Owner, Tech Lead, Designer, PRD, Figma, PTD, DTD, Jira, ETA, Team, Last Update)

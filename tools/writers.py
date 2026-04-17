@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pm.config import GOOGLE_CREDS_FILE, GOOGLE_TOKEN_FILE
 
-_ROADMAP_SHEET_ID = "YOUR_SPREADSHEET_ID"
+_ROADMAP_SHEET_ID = os.getenv("ROADMAP_SPREADSHEET_ID", "")
 _FEATURE_REQUEST_TAB = "Feature Request"
 _SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 

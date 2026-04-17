@@ -26,8 +26,8 @@ Print both file paths so the PM can open them in Obsidian:
 Then say:
 ```
 Weekly updates saved. Review before sending:
-- Exec → Ryan DM (MANAGER_SLACK_ID) + Elia DM — Sunday 5PM
-- Detailed → #car-leads (CHANNEL_ID) + #cars-weekly-updates (CHANNEL_ID) — Monday noon
+- Exec → Manager DM (MANAGER_SLACK_ID) + Stakeholder DM — Sunday 5PM
+- Detailed → #your-leads-channel (CHANNEL_ID) + #your-updates-channel (CHANNEL_ID) — Monday noon
 
 When ready, tell me "send exec" or "send detailed" (or both) and I'll post them.
 ```
