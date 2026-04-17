@@ -36,6 +36,6 @@ def start():
             "Create a Slack app at https://api.slack.com/apps and add tokens to ~/claude/.env"
         )
         return
-    logger.info("Starting the PM Bot (Socket Mode)...")
+    logger.info("Starting Product Copilot (Socket Mode)...")
     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
     handler.start()

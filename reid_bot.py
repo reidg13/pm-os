@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""the PM Bot — Slack bot for Cars project status questions."""
+"""Product Copilot — Slack bot for project status questions."""
 
 import sys
 from pathlib import Path

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cars Copilot MCP Server — entry point."""
+"""Product Copilot MCP Server — entry point."""
 
 import sys
 from pathlib import Path

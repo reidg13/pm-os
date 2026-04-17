@@ -1267,7 +1267,7 @@ def write_daily_meeting_notes_with_agenda(meetings, for_date=None):
     meetings: list of dicts with keys:
       - title (str)
       - time  (str, e.g. "9:30 AM")
-      - attendees (list of str, display names, the PM excluded)
+      - attendees (list of str, display names, PM excluded)
       - description (str, optional — agenda text, Zoom links stripped)
       - num_attendees (int, optional)
 

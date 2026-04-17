@@ -1,6 +1,6 @@
-"""Cars Copilot MCP Server.
+"""Product Copilot MCP Server.
 
-Exposes read-only tools for Cars project data, plus one write tool for feature requests.
+Exposes read-only tools for project data, plus one write tool for feature requests.
 No meeting notes, daily notes, or personal data. Privacy enforced at the tool level.
 """
 
@@ -18,9 +18,9 @@ from tools import readers, writers
 _port = int(os.getenv("MCP_PORT", "3200"))
 
 mcp = FastMCP(
-    "Cars Copilot",
+    "Product Copilot",
     instructions=(
-        "Cars Copilot provides read-only access to the product team's project data at Engine. "
+        "Product Copilot provides read-only access to project data. "
         "Use these tools to check project status, roadmap, dependencies, and ownership. "
         "You can also submit feature requests. "
         "You do NOT have access to meeting notes, daily notes, or personal data."
@@ -36,7 +36,7 @@ mcp = FastMCP(
 
 @mcp.tool()
 def get_all_projects() -> str:
-    """List all Cars projects with their current status and due date.
+    """List all projects with their current status and due date.
     Use for broad overview questions like 'what's in progress?' or 'what's blocked?'"""
     return readers.get_all_projects()
 
@@ -44,7 +44,7 @@ def get_all_projects() -> str:
 @mcp.tool()
 def get_project_detail(project_name: str) -> str:
     """Read the full project file by name. Returns status, open tasks, PRD summary,
-    context, and links. Supports fuzzy matching (e.g. 'Hertz', 'BOOP', 'NOMAD').
+    context, and links. Supports fuzzy name matching.
     Private sections are stripped."""
     return readers.get_project_detail(project_name)
 
@@ -132,7 +132,7 @@ def submit_feature_request(
     submitted_by: str,
     source: str = "",
 ) -> str:
-    """Submit a feature request to the Cars roadmap.
+    """Submit a feature request to the product roadmap.
     Appends a row to the Feature Request tab of the roadmap Google Sheet.
     This is the ONLY write operation available."""
     return writers.submit_feature_request(description, submitted_by, source)

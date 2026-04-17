@@ -88,7 +88,7 @@ def handle_mention(event: dict, say, client):
     question = _clean_message(event.get("text", ""), bot_user_id)
 
     if not question:
-        say(text="Ask me anything about Cars projects, roadmap, or weekly updates.", thread_ts=thread_ts)
+        say(text="Ask me anything about projects, roadmap, or weekly updates.", thread_ts=thread_ts)
         return
 
     # Hourglass reaction while thinking

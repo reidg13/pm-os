@@ -2,8 +2,7 @@
 
 ## Who you're working with
 
-PM_NAME — Product Manager, Cars vertical at YOUR_COMPANY (B2B corporate travel).
-Focus: your product area product growth, AM activation, PLG, and supply integrations.
+Product Manager — update this with your name, vertical, and focus areas.
 
 ## Proactive context loading
 
@@ -65,13 +64,13 @@ At the start of any session involving project work, status, or next steps:
 
 ### Project layout
 ```
-/Users/reidgilbertson/claude/
+~/claude/
 ├── run_query.py          # Snowflake query runner → (cols, rows)
 ├── pm.py                 # CLI entry point for all PM automation
 ├── pm/
 │   ├── today.py          # pm.py briefing — daily briefing (called by /today skill)
 │   ├── weekly.py         # pm.py weekly — generate weekly update via Claude API
-│   ├── metrics.py        # Snowflake daily/weekly car metrics
+│   ├── metrics.py        # Snowflake daily/weekly metrics
 │   ├── vault.py          # Read/write Obsidian vault
 │   ├── asana_client.py   # Asana API
 │   ├── tasks.py          # Task add/done helpers
@@ -97,17 +96,17 @@ venv/bin/python pm.py metrics-setup     # Re-discover + cache Snowflake schema (
 ```
 
 ### pm.py briefing — sections in order
-1. **CAR METRICS** — Mon/Sun: last week vs prior 4 weeks. Other days: yesterday vs prior 4 same-weekdays.
+1. **METRICS** — Mon/Sun: last week vs prior 4 weeks. Other days: yesterday vs prior 4 same-weekdays.
 2. **ACTIVE PROJECTS** — tasks from Obsidian Projects/, sorted by due date
 3. **ASANA BOARDS** — overdue (red) + upcoming tasks
 4. **TO INVESTIGATE** — ideas from `Areas/Discovery + Research/Ideas to Investigate.md`
-5. **INDUSTRY NEWS** — Google News RSS, rental car/corporate travel, last 7 days
+5. **INDUSTRY NEWS** — Google News RSS, your industry keywords, last 7 days
 6. **CLAUDE CAN HELP WITH** — top 8 Obsidian tasks matching action patterns
 7. Saves daily note → `Daily Notes/YYYY-MM-DD.md`
 
 ### Obsidian vault paths
 ```
-/Users/reidgilbertson/Documents/Obsidian Vault/
+Obsidian Vault/
 ├── Projects/              # One folder per project, each with a .md file
 ├── Areas/
 │   ├── Weekly Updates/    # YYYY-MM-DD.md (saved by pm.py weekly, tomorrow's date)
@@ -135,11 +134,11 @@ Load these when relevant — don't load all at once:
 
 | File | Contents |
 |---|---|
-| `~/.claude/docs/snowflake.md` | Tables, columns, SQL patterns, query runner usage, email campaign methodology |
-| `~/.claude/docs/analytics.md` | TAM findings, GBV goals, Amplitude chart IDs, SRP baselines, L2B data |
-| `~/.claude/docs/communication.md` | Slack formatting rules, Gmail triage, Slack contacts, Calendar tools |
-| `~/.claude/docs/dev-environment.md` | Members local dev, AWS credentials, DNS setup, Figma capture workflow |
-| `~/.claude/docs/infographics.md` | Engine brand system, chart label rules, overlap check requirements |
-| `~/.claude/docs/people-and-cadence.md` | Key people, meeting cadence, Asana boards |
-| `~/.claude/docs/query-patterns.md` | Reusable Snowflake/Amplitude queries (PLG FTB cohort, first-time bookers, etc.) |
-| `~/.claude/docs/project-dependencies.md` | Cross-project dependency map — check before changing project status/priority |
+| `~/.claude/docs/snowflake.md` | Tables, columns, SQL patterns, query runner usage |
+| `~/.claude/docs/analytics.md` | Key metrics, goals, Amplitude chart IDs |
+| `~/.claude/docs/communication.md` | Slack formatting rules, Gmail triage, contacts, Calendar tools |
+| `~/.claude/docs/dev-environment.md` | Local dev setup, credentials, DNS |
+| `~/.claude/docs/infographics.md` | Brand system, chart label rules |
+| `~/.claude/docs/people-and-cadence.md` | Key people, meeting cadence, boards |
+| `~/.claude/docs/query-patterns.md` | Reusable Snowflake/Amplitude queries |
+| `~/.claude/docs/project-dependencies.md` | Cross-project dependency map |

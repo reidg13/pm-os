@@ -1,4 +1,4 @@
-"""Read-only tools for Cars project data.
+"""Read-only tools for project data.
 
 Each function returns a string (JSON or markdown) suitable for both MCP and Slack bot.
 No vault modifications, no meeting notes, no daily notes — only team-appropriate project data.
@@ -41,7 +41,7 @@ def _json_result(obj) -> str:
 # ---------------------------------------------------------------------------
 
 def get_all_projects() -> str:
-    """List all Cars projects with their current status and due date."""
+    """List all projects with their current status and due date."""
     result = vault.get_all_projects_with_status()
     summary = {}
     for proj, info in result.items():

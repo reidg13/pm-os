@@ -1,4 +1,4 @@
-"""Write tools for Cars Copilot.
+"""Write tools for Product Copilot.
 
 Only one write operation: appending feature requests to a Google Sheet.
 No vault modifications. No roadmap edits.
@@ -45,7 +45,7 @@ def submit_feature_request(
     submitted_by: str,
     source: str = "",
 ) -> str:
-    """Append a feature request to the YOUR_ROADMAP_TAB Google Sheet.
+    """Append a feature request to the roadmap Google Sheet.
 
     Returns a confirmation message or a friendly error if not configured.
     """

@@ -1,6 +1,6 @@
 # PM OS — Product Manager Operating System
 
-A CLI-driven personal operating system for product managers. Automates daily briefings, meeting note processing, project/task management, email and Slack triage, and integration with Obsidian vault, Google Sheets roadmap, Asana, Snowflake analytics, and Claude API.
+A CLI-driven personal operating system for product managers. Automates daily briefings, meeting note processing, project/task management, email and Slack triage, and integration with Obsidian vault, Google Sheets roadmap, Snowflake analytics, and Claude API.
 
 ## What This Does
 
@@ -11,7 +11,7 @@ This PM OS is designed to reduce context switching and manual task juggling by c
 3. **Weekly Updates** (`/schedule-weekly` skill) — Generates weekly status update from vault data (including shipped projects synced from roadmap), reviews, and posts to Slack.
 4. **Meeting Note Processing** — Extracts action items and decisions from Granola meeting notes, files them to Obsidian, and syncs to project task lists.
 5. **Task Management** — Obsidian vault integration: add/complete tasks, set due dates, sync daily note checkboxes to project files.
-6. **Metrics & Insights** — Snowflake integration for daily/weekly metrics (e.g., your product area bookings, GBV), Industry news feeds, and performance tracking.
+6. **Metrics & Insights** — Snowflake integration for daily/weekly metrics (e.g., bookings, revenue), Industry news feeds, and performance tracking.
 7. **Competitor Research** — Voice of Customer Copilot for feature research, app store mining, and UX analysis.
 
 ## Data Flow: Google Sheets Roadmap + Obsidian Vault
@@ -43,7 +43,7 @@ Google Sheets Roadmap          Obsidian Vault
 **Roadmap spreadsheet:** Set `ROADMAP_SPREADSHEET_ID` in your `.env` (get the ID from your Google Sheets URL)
 
 Tabs:
-- **YOUR_ROADMAP_TAB** — Active projects (Status, Project, Type, Owner, Tech Lead, Designer, PRD, Figma, PTD, DTD, Jira, ETA, Team, Last Update)
+- **Roadmap** — Active projects (Status, Project, Type, Owner, Tech Lead, Designer, PRD, Figma, PTD, DTD, Jira, ETA, Team, Last Update)
 - **Shipped Work** — Completed items with ship dates
 - **Feature Request** — Incoming feature requests
 - **Idea Bank [WIP]** — Future ideas
@@ -51,7 +51,7 @@ Tabs:
 ## File Structure
 
 ```
-/Users/YOUR_USERNAME/claude/
+~/claude/
 ├── .env                          # Credentials (DO NOT COMMIT)
 ├── .env.example                  # Template for .env
 ├── .gitignore                    # Already configured
@@ -265,11 +265,11 @@ Designed to run on a 30-minute loop via `/loop` mode.
 
 ### `/schedule-weekly` — Weekly Update Review
 
-Reads generated weekly update, prompts for the PM approval, then posts to Slack.
+Reads generated weekly update, prompts for approval, then posts to Slack.
 
 ### `/competitor-analysis` — Competitor UX Analysis
 
-Runs comprehensive analysis across 9 your product area competitors:
+Runs comprehensive analysis across 9 competitors:
 - 9 parallel UX research agents (WebSearch + WebFetch)
 - 1 performance + complaints agent
 - 1 app store mining agent
@@ -340,10 +340,10 @@ Local MCP servers for reading/writing Google Sheets and Slides. Auto-started by 
 
 ### Snowflake
 
-Connects via `snowflake-connector-python`. Queries your product area booking metrics, GBV, and funnel data.
+Connects via `snowflake-connector-python`. Queries booking metrics, revenue, and funnel data.
 
 **Key tables:**
-- `FCT_BOOKINGS` — Car bookings with date, amount, customer info
+- `FCT_BOOKINGS` — Bookings with date, amount, customer info
 - Custom schema defined in `data/metrics_schema.json`
 
 **Usage:**

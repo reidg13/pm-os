@@ -2,7 +2,7 @@
 allowed-tools: Bash
 ---
 
-Review and manually send this week's Cars update. Slack auto-scheduling is disabled — the PM reviews before sending.
+Review and manually send this week's update. Slack auto-scheduling is disabled — the PM reviews before sending.
 
 Step 1 — Read both update files:
 ```bash

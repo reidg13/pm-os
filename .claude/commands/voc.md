@@ -114,7 +114,7 @@ Then show what they're missing:
 
 | What I can do | Requires | Try asking |
 |---|---|---|
-| Research-to-decision mapping | None | "What evidence supports adding group booking to Cars?" |
+| Research-to-decision mapping | None | "What evidence supports adding a feature to your product?" |
 | Gap analysis | None | "What don't we know about Spaces shopper behavior?" |
 | Research brief generation | None | "Generate a research brief for hotel search redesign" |
 | Interview guide creation | None | "Write a discussion guide for enterprise admin interviews" |
@@ -181,7 +181,7 @@ Then show what they're missing:
 | Business metrics | Snowflake | "Booking trends L30 vs L90 by vertical" |
 | Account concentration risk | Snowflake | "Are we too dependent on any single account or segment?" |
 | Salesforce pipeline view | Snowflake | "What does the pipeline look like for enterprise accounts?" |
-| Cross-source deep dive | Snowflake + 2 others | "Full deep dive on the cars vertical" |
+| Cross-source deep dive | Snowflake + 2 others | "Full deep dive on your vertical" |
 
 #### Design / UX
 
@@ -393,8 +393,8 @@ Example: "What do customers think about our car search?"
 - **RT1**: Past research findings on car search → UXR Knowledge Base
 - **RT2**: Customer verbatims about car search → Attention (query: "car search experience OR car results OR finding a rental car")
 - **RT3**: Behavioral signals — funnel drop-off, rage clicks → Amplitude + LogRocket
-- **RT4**: Bug reports and feature requests mentioning cars → Slack (`#product`, `#sales-hitlist`)
-- **RT5**: NPS verbatims mentioning cars → Slack (`#pendo-nps-responses`)
+- **RT4**: Bug reports and feature requests mentioning your product area → Slack (`#product`, `#sales-hitlist`)
+- **RT5**: NPS verbatims mentioning your product area → Slack (`#pendo-nps-responses`)
 - **RT6**: Partner-side feedback on car inventory → Slack (`#partnerhub-user-feedback`)
 
 Example: "Prep me for a QBR with TxDOT"
@@ -796,7 +796,7 @@ Setup (5 minutes):
 Once set up, you can ask:
   → "Top 10 most booked hotels in Texas last 30 days"
   → "Which accounts have the highest AHS but lowest booking frequency?"
-  → "Run a cross-source deep dive on the cars vertical"
+  → "Run a cross-source deep dive on your vertical"
   → "Run a competitor analysis on Concur vs Navan"
   → "What Salesforce product gaps are trending this quarter?"
 ```
@@ -848,7 +848,7 @@ Requires: Snowflake + at least 2 MCPs from Level 2
 Orchestrates all 5 data streams in parallel:
 
 **Step 1 — Resolve vertical:**
-- `cars` → Cars config
+- `your-vertical` → Your product config
 - `flights` → Flights config
 - `hotels` or `lodging` → Hotels config
 
@@ -959,7 +959,7 @@ cluster_context: ""
 ### Cars UX Research Group Bookings
 - **When:** March '26
 - **Methods:** User Interviews, Amplitude/Quant, Session Analysis
-- **POCs:** PM_NAME, Ellen Varga, Annie Wilkin
+- **POCs:** PM_NAME, DESIGNER_NAME, Annie Wilkin
 - **Product Areas:** Cars, Trips and Safety
 - **Learnings:** Not yet recorded
 - **Docs:** Interview Guide
@@ -1120,7 +1120,7 @@ cluster_context: ""
 - Allie Martin — Spaces (hotel operators, chain research, pricing)
 - Annie Wilkin — Cars, Trips and Safety
 - Camay Ho — Trips and Safety, Duty of Care
-- PM_NAME, Ellen Varga — Cars
+- PM_NAME, DESIGNER_NAME — Cars
 - Mihir Naik, Liz Harrison, Shannon Ervin — Partner Hub
 
 **Methods used:** User Interviews, User Testing, Competitive Audit, Amplitude/Quant, Session Analysis

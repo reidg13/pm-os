@@ -179,15 +179,15 @@ Using all tasks gathered in Step 2, classify each:
 
 ---
 
-## Step 5.5: Pull recent Cars booking failures
+## Step 5.5: Pull recent Booking failures
 
-Cars booking failures are **actionable AM-escalation signals**, not routine metrics — they surface real customer incidents that may need AM follow-up today. (This is an exception to the "no metrics in briefing" rule: we're not pulling funnel/conversion data, just incident triage.)
+Booking failures are **actionable AM-escalation signals**, not routine metrics — they surface real customer incidents that may need AM follow-up today. (This is an exception to the "no metrics in briefing" rule: we're not pulling funnel/conversion data, just incident triage.)
 
 ### A. Query Datadog (last 24h)
 
 ```
 mcp__claude_ai_Datadog__search_datadog_logs(
-  query='service:engine-integrations-cars-gateway status:error "Gateway Book Error" env:prd-use1-default',
+  query='service:YOUR_SERVICE_NAME status:error "Gateway Book Error" env:prd-use1-default',
   from="now-24h",
   to="now",
   sort="-timestamp",
@@ -299,7 +299,7 @@ Write using this exact structure:
 - [ ] Task text *(Project Name)*
 
 ### Waiting
-- [ ] PTD from Daniel *(Cars NOMAD)*
+- [ ] Example task *(Project Name)*
 
 ---
 

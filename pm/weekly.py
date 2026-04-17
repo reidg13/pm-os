@@ -362,7 +362,7 @@ Projects marked Done: {', '.join(done_projects.keys()) if done_projects else 'No
 --- PREVIOUS WEEKLY UPDATE (for date comparison — flag any project dates that changed) ---
 {previous_update[:2000] if previous_update else "None."}"""
 
-    exec_prompt = f"""You are a PM assistant writing a weekly status update for PM_NAME, PM on the product team at YOUR_COMPANY (B2B corporate travel). This goes to the CEO and VP Product on Slack — keep it executive-level: short, high-signal, no noise.
+    exec_prompt = f"""You are a PM assistant writing a weekly status update for the product manager. This goes to the CEO and VP Product on Slack — keep it executive-level: short, high-signal, no noise.
 
 Write this week's update using ONLY the data provided below. Do not infer or add anything not present in the data.
 
@@ -386,7 +386,7 @@ Rules:
 {data_block}
 """
 
-    detailed_prompt = f"""You are a PM assistant writing a weekly pre-read for PM_NAME, PM on the product team at YOUR_COMPANY (B2B corporate travel). This goes to the Cars leads team on Slack.
+    detailed_prompt = f"""You are a PM assistant writing a weekly pre-read for the product manager. This goes to the team leads on Slack.
 
 Write this week's update using ONLY the data provided below. Do not infer or add anything not present in the data.
 
