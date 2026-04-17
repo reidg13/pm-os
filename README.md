@@ -1,18 +1,52 @@
 # PM OS — Product Manager Operating System
 
-A CLI-driven personal operating system for product managers. Automates daily briefings, meeting note processing, project/task management, email and Slack triage, and integration with Obsidian vault, Asana, Snowflake analytics, and Claude API.
+A CLI-driven personal operating system for product managers. Automates daily briefings, meeting note processing, project/task management, email and Slack triage, and integration with Obsidian vault, Google Sheets roadmap, Asana, Snowflake analytics, and Claude API.
 
 ## What This Does
 
 This PM OS is designed to reduce context switching and manual task juggling by centralizing:
 
-1. **Daily Briefing** (`/today` skill) — Syncs yesterday's tasks, pulls roadmap status, gathers active projects, files Granola meeting notes, triages email and Slack, and surfaces key metrics.
+1. **Daily Briefing** (`/today` skill) — Syncs Google Sheets roadmap to Obsidian, pulls project status, gathers tasks, files Granola meeting notes, triages email and Slack, proposes roadmap updates back to the sheet.
 2. **Lightweight Triage** (`/sync` skill) — 30-minute interval sync of Granola notes, email, and Slack (2-hour lookback).
-3. **Weekly Updates** (`/schedule-weekly` skill) — Generates and reviews weekly status update before posting to Slack.
+3. **Weekly Updates** (`/schedule-weekly` skill) — Generates weekly status update from vault data (including shipped projects synced from roadmap), reviews, and posts to Slack.
 4. **Meeting Note Processing** — Extracts action items and decisions from Granola meeting notes, files them to Obsidian, and syncs to project task lists.
 5. **Task Management** — Obsidian vault integration: add/complete tasks, set due dates, sync daily note checkboxes to project files.
 6. **Metrics & Insights** — Snowflake integration for daily/weekly metrics (e.g., your product area bookings, GBV), Industry news feeds, and performance tracking.
 7. **Competitor Research** — Voice of Customer Copilot for feature research, app store mining, and UX analysis.
+
+## Data Flow: Google Sheets Roadmap + Obsidian Vault
+
+The Google Sheets roadmap is the **source of truth for project status**. Obsidian vault is the **source of truth for tasks and details**. They sync bidirectionally via the `/today` skill:
+
+```
+Google Sheets Roadmap          Obsidian Vault
+(status, owner, ETA)    ←→    (tasks, PRD, context)
+        │                              │
+        │  /today Step 2:              │
+        │  Roadmap → Vault             │
+        │  (status, team, new          │
+        │   projects auto-created)     │
+        │                              │
+        │  /today Step 9:              │
+        │  Vault → Roadmap             │
+        │  (propose status/date        │
+        │   updates back to sheet)     │
+        │                              │
+        └──────────┬───────────────────┘
+                   │
+                   ▼
+            weekly.py picks up
+            shipped projects from
+            vault for weekly update
+```
+
+**Roadmap spreadsheet:** `YOUR_SPREADSHEET_ID`
+
+Tabs:
+- **YOUR_ROADMAP_TAB** — Active projects (Status, Project, Type, Owner, Tech Lead, Designer, PRD, Figma, PTD, DTD, Jira, ETA, Team, Last Update)
+- **Shipped Work** — Completed items with ship dates
+- **Feature Request** — Incoming feature requests
+- **Idea Bank [WIP]** — Future ideas
 
 ## File Structure
 
@@ -257,7 +291,13 @@ Includes role-based task router (PM, Sales, Leadership, Design, GTM, PR, Data, O
 
 ## External Integrations
 
-### Google Sheets & Slides (Roadmap, Presentations)
+### Google Sheets & Slides (Roadmap — Primary Integration)
+
+The Google Sheets roadmap is the **primary project tracking integration**. The `/today` skill syncs it bidirectionally with the Obsidian vault:
+
+- **Roadmap → Vault (Step 2):** Project status, team, owner, tech lead, designer fields sync from the sheet to Obsidian YAML frontmatter. New roadmap entries auto-create Obsidian project files.
+- **Vault → Roadmap (Step 9):** After the day's work, `/today` proposes status and date updates back to the sheet (with confirmation before writing).
+- **Shipped items:** Projects marked "Done" on the roadmap sync to vault as completed, and `weekly.py` picks them up as "shipped this week" in the weekly update.
 
 Local MCP servers for reading/writing Google Sheets and Slides. Auto-started by a SessionStart hook.
 
@@ -274,7 +314,7 @@ Local MCP servers for reading/writing Google Sheets and Slides. Auto-started by 
    - **Google Slides/Drive** on port 3100 (`@piotr-agier/google-drive-mcp` npm package)
 
 3. You'll need Google OAuth credentials. The hook expects:
-   - `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` (set in the hook script)
+   - `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` (set in the hook script — replace with your own from Google Cloud Console)
    - A Google Drive OAuth credentials JSON file (for Slides)
 
 4. Add the MCP servers to your Claude Code config (`~/.claude.json`):
