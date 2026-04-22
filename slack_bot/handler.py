@@ -12,7 +12,7 @@ from slack_bot.tools import TOOL_DEFINITIONS, dispatch_tool
 
 logger = logging.getLogger(__name__)
 
-_claude = anthropic.Anthropic()
+_claude = anthropic.AnthropicBedrock()
 
 # Max tool-use rounds to prevent runaway loops
 _MAX_TOOL_ROUNDS = 5

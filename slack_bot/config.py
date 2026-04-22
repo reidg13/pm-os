@@ -18,4 +18,4 @@ ALLOWED_USERS = (
     else None
 )
 
-CLAUDE_MODEL = os.getenv("REIDBOT_MODEL", "claude-sonnet-4-20250514")
+CLAUDE_MODEL = os.getenv("REIDBOT_MODEL", "us.anthropic.claude-sonnet-4-5-20250929-v1:0")
