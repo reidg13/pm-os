@@ -2,14 +2,15 @@
 
 Run: venv/bin/python -m pm.vault_lint [--verbose] [--project NAME]
 
-Schema contract lives in:
-~/.claude/projects/-Users-reidgilbertson/memory/reference_vault_schema.md
+Schema contract lives in the auto-memory directory:
+  ~/.claude/projects/<cwd-slug>/memory/reference_vault_schema.md
 """
 import argparse
+import os
 import re
 from pathlib import Path
 
-VAULT = Path.home() / "Documents" / "Obsidian Vault"
+VAULT = Path(os.environ.get("VAULT_PATH", Path.home() / "Documents" / "Obsidian Vault")).expanduser()
 PROJECTS = VAULT / "Projects"
 
 REQUIRED_FRONTMATTER = ["status"]

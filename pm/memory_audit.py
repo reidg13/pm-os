@@ -12,12 +12,27 @@ Usage:
     venv/bin/python -m pm.memory_audit [--days 30] [--verbose]
 """
 import argparse
+import os
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
 
-MEMORY_DIR = Path.home() / ".claude" / "projects" / "-Users-reidgilbertson" / "memory"
-VAULT_PATH = Path.home() / "Documents" / "Obsidian Vault"
+
+def _memory_dir() -> Path:
+    """Return Claude Code's auto-memory dir for the current working directory.
+
+    Claude Code derives it from the cwd (path-slugified). Honors
+    CLAUDE_MEMORY_DIR env var if set (useful for tests).
+    """
+    override = os.environ.get("CLAUDE_MEMORY_DIR")
+    if override:
+        return Path(override).expanduser()
+    cwd_slug = str(Path.cwd()).replace("/", "-")
+    return Path.home() / ".claude" / "projects" / cwd_slug / "memory"
+
+
+MEMORY_DIR = _memory_dir()
+VAULT_PATH = Path(os.environ.get("VAULT_PATH", Path.home() / "Documents" / "Obsidian Vault")).expanduser()
 
 
 def scan_project_memories(stale_days: int = 30) -> list[dict]:

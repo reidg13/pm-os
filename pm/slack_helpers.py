@@ -36,8 +36,8 @@ def lookback_query(extra: str, hours: int = 24) -> str:
     """Build a standard lookback Slack query.
 
     Example:
-        lookback_query("<@U09EE09ML7Q>", hours=2)
-        → "<@U09EE09ML7Q> after:2026-04-21"
+        lookback_query("<@YOUR_SLACK_USER_ID>", hours=2)
+        → "<@YOUR_SLACK_USER_ID> after:<date>"
     """
     return f"{extra} after:{hours_ago_after(hours)}"
 
